@@ -1,0 +1,430 @@
+@import url('https://fonts.googleapis.com/css?family=Sarpanch:900');
+
+@import url('https://fonts.googleapis.com/css?family=Kanit:900');
+
+@import url('https://fonts.googleapis.com/css?family=PT+Mono');
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap');
+body {
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+.App {
+  overflow-x: hidden;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+div {
+  margin: 10px 0;
+}
+
+.textarea{
+  position: relative;
+  top: 11px;
+bottom: 10px;
+}
+
+.head {
+
+  transform: skew(#{$rotationAmt}deg) rotate(#{$rotationAmt}deg);
+  grid-area: text;
+  font-family: 'Sarpanch', sans-serif;
+  font-size: 15vmin;
+  margin: 0;
+  padding: 16px;
+  color: #1d9099;
+  text-shadow: 1vmin 1vmin 0 #E79C10, -1vmin -1vmin 0 #D53A33;
+}
+
+
+.hover-2 {
+  --c: #1095c1; /* the color */
+  --b: .1em;    /* border length*/
+  --d: 11px;    /* the cube depth */
+  
+  --_s: calc(var(--d) + var(--b));
+  cursor: pointer;
+  color: var(--c);
+  border: solid #0000;
+  border-width: var(--b) var(--b) var(--_s) var(--_s);
+  background:
+    conic-gradient(at left var(--d)  bottom var(--d),
+      #0000 90deg, rgb(255 255 255 /0.3) 0 225deg,rgb(255 255 255 /0.6) 0) border-box,
+    conic-gradient(at left var(--_s) bottom var(--_s),
+      #0000 90deg,var(--c) 0) 0 100%/calc(100% - var(--b)) calc(100% - var(--b))  border-box;
+  transform: translate(calc(var(--d)/-1),var(--d));
+  clip-path: 
+    polygon(
+     var(--d) 0%, 
+     var(--d) 0%, 
+     100% 0%, 
+     100% calc(100% - var(--d)),
+     100% calc(100% - var(--d)),
+     var(--d) calc(100% - var(--d))
+    );
+  transition: 0.5s;
+}
+.hover-2:hover {
+  transform: translate(0,0);
+  clip-path: 
+    polygon(
+     0% var(--d), 
+     var(--d) 0%, 
+     100% 0%, 
+     100% calc(100% - var(--d)), 
+     calc(100% - var(--d)) 100%, 
+     0% 100%
+   );
+}
+
+.hover-3 {
+  --b: 0.2em;   /* the thickness of the line */
+  --c: #1095c1; /* the color */
+  padding: 0.6rem 1.3rem !important;
+  color: #0000;
+  padding-block: var(--b);
+  background: 
+    linear-gradient(var(--c) 50%,#000 0) 0% calc(100% - var(--_p,0%))/100% 200%,
+    linear-gradient(var(--c) 0 0) 0% var(--_p,0%)/var(--_p,0%) var(--b) no-repeat;
+  -webkit-background-clip: text,padding-box;
+          background-clip: text,padding-box;
+  transition: .3s var(--_s,0s) linear,background-size .3s calc(.3s - var(--_s,0s));
+}
+.hover-3:hover {
+  --_p: 100%;
+  --_s: .3s;
+}
+
+
+.addedTask{
+  /* min-width: 250px; */
+  display: block;
+  /* height: 50px; */
+  position: relative;
+  border-radius: 5px;
+  background: linear-gradient(to right, #f8f6c5 35%, #d6e2ad 100%);
+  /* margin-bottom: 40px; */
+  padding: 15px 25px 10px 40px;
+  color: darkslategray;
+  box-shadow: 1px 2px 1px -1px #777;
+  transition: background 200ms ease-in-out;
+}
+
+.addedTask:before{
+    z-index: -1;
+    position: absolute;
+    content: "";
+    bottom: 13px;
+    right: 7px;
+    width: 25%;
+    top: 0;
+    box-shadow: 0 15px 10px #777;
+    transform: rotate(4deg);
+    transition: all 150ms ease-in-out;
+}
+.addedTask:hover{
+  background: linear-gradient(to right, #e5e7df 0%, #abbd73 100%);
+}
+.addedTask:hover::before{
+  transform: rotate(0deg);
+  bottom: 20px;
+  z-index: -10;
+}
+.circle{
+  position: absolute;
+  top: 13px;
+  left: 18px;
+  border-radius: 50%;
+  box-shadow: inset 1px 1px 1px 0px rgba( 0, 0, 0, .5), inset 0 0 0 25px white;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  }
+
+
+  .task-item {
+/* for editing newely added task design */
+ font-size: 1.6rem;
+word-wrap:break-word;
+  }
+
+
+/* complete button designing */
+.completeBtn{
+  background-color: #c2fbd7;
+  border-radius: 100px;
+  border: 1.4px solid rgb(90, 222, 56);
+  box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+  color: green;
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.completeBtn:hover {
+  box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+}
+
+
+
+/* delete buton designiing */
+.deletebtn {
+  background: #FF4742;
+  border: 1px solid #FF4742;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.deletebtn:hover,
+.deletebtn:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #FF4742;
+}
+
+.deletebtn:active {
+  opacity: .5;
+}
+
+
+/* edit button designing */
+
+.editbtn {
+  align-items: center;
+  background-color: #fee6e3;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  /* display: flex; */
+  font-family: Inter,sans-serif;
+  font-size: 16px;
+  height: 43.2px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.editbtn:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+
+@media (min-width: 768px) {
+  .editbtn {
+    padding: 0 40px;
+  }
+}
+
+
+/* input field design  */
+
+.textarea {
+  border-top-left-radius: 37px 140px;
+  border-top-right-radius: 23px 130px;
+  border-bottom-left-radius: 110px 19px;
+  border-bottom-right-radius: 120px 24px;
+  /* position: relative; */
+  border: solid 3px #6e7491;
+  padding: 10px;
+  max-width: 800px;
+  width: 70%;
+  font-size: 17px;
+  line-height: 28px;
+  transform: rotate(-1deg);
+  box-shadow: 3px 15px 8px -10px rgba(0, 0, 0, 0.3);
+  transition: all 0.13s ease-in;
+}
+
+.textarea:hover {
+  transform: translateY(-7px) rotate(0.1deg);
+  box-shadow: 3px 15px 8px -10px rgba(0, 0, 0, 0.3);
+}
+
+/* .textarea:hover .border {
+  transform: translateY(4px) rotate(-5deg);
+} */
+
+
+.first-color { 
+	background: #b31313; 
+}
+	
+.second-color { 
+	background: #ff9000; 
+}
+
+.third-color { 
+	background: #fdda16; 
+}
+
+.fourth-color { 
+	background: #ffee82; 
+}
+
+
+
+
+
+
+.ticker-wrap {
+  font-weight: 600;
+  position:absolute;
+  top: 0rem;
+  z-index: 3;
+  background-color: #0000;
+  padding-left: 100%;
+  box-sizing: content-box;
+}
+.ticker-wrap .ticker {
+  display: inline-block;
+  white-space: nowrap;
+  box-sizing: content-box;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-name: ticker;
+  animation-name: ticker;
+  -webkit-animation-duration: 104s;
+  animation-duration: 104s;
+}
+@keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translateZ(0);
+    visibility: visible;
+  }
+  to {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+.ticker-heading {
+  font-family: Beatrice, sans-serif;
+  ;
+  position: absolute;
+  display: block;
+  left: 0;
+  padding: 11px 40px;
+  z-index: 3;
+  text-transform: uppercase !important;
+}
+.ticker-wrap .ticker__item:before {
+  content: "";
+  height: 11px;
+  width: 11px;
+  display: inline-block;
+  background-color: #0000;
+  border-radius: 100%;
+  position: relative;
+  margin-right: 15px
+}
+.ticker-heading:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  position: absolute;
+  margin-left: 40px
+}
+.ticker-wrap .ticker:hover {
+  -webkit-animation-play-state: paused;
+  -moz-animation-play-state: paused;
+  -ms-animation-play-state: paused;
+  -o-animation-play-state: paused;
+  animation-play-state: paused;
+}
+.ticker-wrap .ticker__item {
+  display: inline-block;
+  font-size: .8rem !important;
+ 
+
+}
+@media only screen and (max-width: 700px) {
+  .ticker-wrap {
+    display: none;
+    overflow-x: hidden;
+  }
+
+}
+
+/*  here i was trying to add one draggable box with some text but i was not able to do that because of time */
+/* draggable box code */
+/* .Appp {
+  font-family: sans-serif;
+  text-align: center;
+} */
+
+/* .draggable {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  max-width: 200px;
+  border: 1px solid #dedede;
+}
+
+.draggable-panel {
+  padding: 10px;
+  background-color: #eee;
+  cursor: move;
+}
+
+.draggable-content {
+  padding: 15px;
+} */
