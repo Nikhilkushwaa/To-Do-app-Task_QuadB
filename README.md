@@ -1,5 +1,7 @@
 # React + Vite
 
+**I AM ONLY SINGLE CONTRIBUTER OF THIS PROJECT DUE TO SOME GITHUB DESKTOP SIGNIN ISSUES MY BROTHERS NAME PiyushKushwaha Name is coming in contributers but this is my repo and i am single contributer 
+
 # To-Do-app-Task_QuadB
 Hello my name is Nikhil kumar i completed this task in 24 hours and make it as creative as possible i was having so much other ideas also to modify it but time was less so i am submitting it 
 
